@@ -1,6 +1,6 @@
-import React from 'react'
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs"
 
-export default function Slider(props) {
+export default function Carousel(props) {
     const images=props.images
     const [,...image]=images
     return (
@@ -24,12 +24,12 @@ export default function Slider(props) {
                             </div>
                         })}
                     </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" >
+                        <span style={{transform:'translate(-10vw,-2vw)'}}><BsChevronLeft/></span>
                         <span className="visually-hidden">Previous</span>
                     </button>
                     <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span style={{transform:'translate(10vw,-2vw)'}}><BsChevronRight/></span>
                         <span className="visually-hidden">Next</span>
                     </button>
                 </div>
