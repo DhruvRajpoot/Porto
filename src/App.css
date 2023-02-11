@@ -1,10 +1,15 @@
 nav a {
   color: rgb(248, 248, 248) !important;
-  /* font-size: .8rem; */
-  font-weight: 600;
-  letter-spacing: 1.5px;
   position: relative;
   font-family: overpass, sans-serif;
+}
+
+.collapseNavbar {
+  display: flex;
+  width: 100%;
+  font-size: .8rem;
+  letter-spacing: 1.5px;
+  font-weight: 600;
 }
 
 .navFirstSearch {
@@ -15,15 +20,48 @@ nav a {
   display: block;
 }
 
+.dropdown-menu {
+  background-color: #141414e7;
+  border-radius: 10px;
+}
+
+.nav-link:after {
+  content: '';
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: .4rem;
+  height: 3px;
+  width: 80%;
+  transform: scaleX(0);
+  transition: transform .25s ease-in-out;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+  transform-origin: top left;
+}
+
+nav .active:after {
+  transform: scaleX(1);
+}
+
+.dropdown-toggle:hover::after {
+  transform: scaleX(0);
+}
+
+.dropdown-item a {
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #505050;
+}
+
 @media (max-width:992px) {
-
-  nav a::after,
-  nav .active:after {
-    transform: scaleX(0);
-  }
-
-  nav .active:after {
-    transform: scaleX(0);
+  .active:after{
+    position: relative;
   }
 
   .navFirstSearch {
@@ -33,29 +71,19 @@ nav a {
   .navSecondSearch {
     display: none;
   }
-}
 
-@media (min-width:992px) {
-  nav a::after,
-  nav .active:after {
-    content: '';
-    background-color: white;
+  .collapseNavbar {
+    font-size: 1.2rem;
+    z-index: 100;
     position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
     bottom: 0;
-    left: .4rem;
-    height: 3px;
-    width: 80%;
-    transform: scaleX(0);
-    transition: transform .25s ease-in-out;
-  }
-
-  nav a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-    transform-origin: top left;
-  }
-
-  nav .active:after {
-    transform: scaleX(1);
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #2a2a2af5;
   }
 }

@@ -1,33 +1,42 @@
 import logo from '../images/logo.png'
 import '../App.css'
-import { NavLink,Link } from 'react-router-dom'
+import { NavLink ,Link} from 'react-router-dom'
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaAngleDown } from 'react-icons/fa';
-import { AiOutlineMenuUnfold } from 'react-icons/ai'
+import { AiOutlineMenuUnfold,AiOutlineClose } from 'react-icons/ai'
 import { GoSearch } from 'react-icons/go';
+import { useState } from 'react';
 
 function Navbar() {
+    const [display, setDisplay] = useState('none')
+    const handleclick = () => {
+        if (display === 'none') {
+            setDisplay('flex')
+        }
+        else{setDisplay('none')}
+    }
+    
     return (
-        < nav className="navbar navbar-expand-lg" style={{ background: '#2a2a2a', padding: '1rem .5rem 2vw 1rem' }}>
+        < nav className="navbar navbar-expand-lg" style={{ background: '#2a2a2a', padding: '1rem .5rem calc(1rem + 1vw) 1rem' }}>
             <div className="container-fluid">
-                <img src={logo} alt="" />
+                <Link to='/'><img src={logo} alt="" /></Link>
                 <span className="fs-4 ms-auto navFirstSearch text-light"><GoSearch /></span>
-                <button className="navbar-toggler shadow-none fs-1 text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <AiOutlineMenuUnfold />
+                <button className="navbar-toggler shadow-none fs-1 text-light" type="button" style={{ zIndex: '200' }} onClick={handleclick}>
+                    {display==='none'?<AiOutlineMenuUnfold />:<AiOutlineClose/>}
                 </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <div className={`collapseNavbar ${window.screen.width<992?`d-${display}`:''}`} id="navbarSupportedContent">
                     <ul className="navbar-nav mx-auto mb-2 mb-lg-0 pt-2 text-center">
-                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/">Home</NavLink></li>
-                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/about">About</NavLink></li>
-                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/project">Projects</NavLink></li>
+                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/" onClick={handleclick}>Home</NavLink></li>
+                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/about" onClick={handleclick}>About</NavLink></li>
+                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/project" onClick={handleclick}>Projects</NavLink></li>
                         <li className="nav-item mx-2 dropdown">
-                            <NavLink className={`nav-link dropdown-toggle `} to="/service" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <FaAngleDown /></NavLink>
-                            <ul className="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item" href="/">Interior</a></li>
-                                <li><a className="dropdown-item" href="/">Exterior</a></li>
+                            <NavLink className={`nav-link dropdown-toggle`} to="/service" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <FaAngleDown /></NavLink>
+                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li className="dropdown-item text-center"><Link to="/">Interior</Link></li>
+                                <li className="dropdown-item text-center"><Link to="/">Exterior</Link></li>
                             </ul>
                         </li>
-                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/blog">Blog</NavLink></li>
-                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/contact">Contact</NavLink></li>
+                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/blog" onClick={handleclick}>Blog</NavLink></li>
+                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/contact" onClick={handleclick}>Contact</NavLink></li>
                         <li className="nav-item mx-2 navSecondSearch"><button className='border-0 bg-transparent fs-5 text-light'><GoSearch /></button></li>
                     </ul>
                     <div className="d-flex mb-2 mb-lg-0 justify-content-center">
