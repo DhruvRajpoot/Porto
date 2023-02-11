@@ -1,20 +1,30 @@
 import logo from '../images/logo.png'
 import '../App.css'
-import { NavLink,Link } from 'react-router-dom'
+import '../App2.css'
+import { NavLink } from 'react-router-dom'
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaAngleDown } from 'react-icons/fa';
-import { AiOutlineMenuUnfold } from 'react-icons/ai'
+import { AiOutlineMenuUnfold,AiOutlineClose } from 'react-icons/ai'
 import { GoSearch } from 'react-icons/go';
+import { useState } from 'react';
 
-function Navbar() {
+function Navbar2() {
+    const [display, setDisplay] = useState('none')
+    const handleclick = () => {
+        if (display === 'none') {
+            setDisplay('flex')
+        }
+        else{setDisplay('none')}
+    }
+    
     return (
         < nav className="navbar navbar-expand-lg" style={{ background: '#2a2a2a', padding: '1rem .5rem 2vw 1rem' }}>
             <div className="container-fluid">
                 <img src={logo} alt="" />
                 <span className="fs-4 ms-auto navFirstSearch text-light"><GoSearch /></span>
-                <button className="navbar-toggler shadow-none fs-1 text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <AiOutlineMenuUnfold />
+                <button className="navbar-toggler shadow-none fs-1 text-light" type="button" style={{ zIndex: '200' }} onClick={handleclick}>
+                    {display==='none'?<AiOutlineMenuUnfold />:<AiOutlineClose/>}
                 </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <div className={`collapseNavbar d-${display}`} id="navbarSupportedContent">
                     <ul className="navbar-nav mx-auto mb-2 mb-lg-0 pt-2 text-center">
                         <li className="nav-item mx-2"><NavLink className="nav-link" to="/">Home</NavLink></li>
                         <li className="nav-item mx-2"><NavLink className="nav-link" to="/about">About</NavLink></li>
@@ -41,4 +51,4 @@ function Navbar() {
     )
 };
 
-export default Navbar;
+export default Navbar2;
