@@ -23,7 +23,7 @@ function Navbar() {
                 <button className="navbar-toggler shadow-none fs-1 text-light" type="button" style={{ zIndex: '200' }} onClick={handleclick}>
                     {display==='none'?<AiOutlineMenuUnfold />:<AiOutlineClose/>}
                 </button>
-                <div className={`collapseNavbar ${window.screen.width<992?`d-${display}`:''}`} id="navbarSupportedContent">
+                <div className={`collapseNavbar ${window.screen.width<992?`d-${display}`:''}`}>
                     <ul className="navbar-nav mx-auto mb-2 mb-lg-0 pt-2 text-center">
                         <li className="nav-item mx-2"><NavLink className="nav-link" to="/" onClick={handleclick}>Home</NavLink></li>
                         <li className="nav-item mx-2"><NavLink className="nav-link" to="/about" onClick={handleclick}>About</NavLink></li>
@@ -39,10 +39,10 @@ function Navbar() {
                         <li className="nav-item mx-2"><NavLink className="nav-link" to="/contact" onClick={handleclick}>Contact</NavLink></li>
                         <li className="nav-item mx-2 navSecondSearch"><button className='border-0 bg-transparent fs-5 text-light'><GoSearch /></button></li>
                     </ul>
-                    <div className="d-flex mb-2 mb-lg-0 justify-content-center">
-                        <a className="nav-link" href="/" style={{ fontSize: '1rem' }}><FaFacebookF /></a>
-                        <a className="nav-link" href="/" style={{ fontSize: '1rem' }}><FaTwitter /></a>
-                        <a className="nav-link" href="/" style={{ fontSize: '1rem' }}><FaLinkedinIn /></a>
+                    <div className="d-flex mb-2 mb-lg-0 justify-content-center" style={{fontSize:'1rem'}}>
+                        <a className="nav-link" href="/"><FaFacebookF /></a>
+                        <a className="nav-link" href="/"><FaTwitter /></a>
+                        <a className="nav-link" href="/"><FaLinkedinIn /></a>
                     </div>
                 </div>
             </div>

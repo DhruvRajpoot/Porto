@@ -1,9 +1,8 @@
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs"
 
-export default function Carousel(props) {
-    const images=props.images
-    const [,...image]=images
-    return (
+const Carousel=(props)=> {
+    const [,...image]=props.images
+    return(
         <>
             <div className="carouselDiv">
                 <div id="carouselExampleCaptions" className="carousel slide carousel-light " data-bs-ride="false" style={{ width: `${props.width}`, height: `${props.height}`, margin: '0 auto' }}>
@@ -37,3 +36,5 @@ export default function Carousel(props) {
         </>
     )
 }
+
+export default Carousel;
