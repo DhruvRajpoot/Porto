@@ -16,30 +16,30 @@ function Navbar() {
     }
     
     return (
-        < nav className="navbar navbar-expand-lg" style={{ background: '#2a2a2a', padding: '1rem .5rem calc(1rem + 1vw) 1rem' }}>
+        < nav className="navbar navbar-expand-md fixed-top" style={{ background: '#2a2a2a', padding: '1rem .5rem calc(1rem + 1vw) calc(.5rem + .5vw)' }}>
             <div className="container-fluid">
-                <Link to='/'><img src={logo} alt="" /></Link>
+                <Link to='/'><img src={logo} alt="" style={{width:"calc(4rem + 4vw)"}}/></Link>
                 <span className="fs-4 ms-auto navFirstSearch text-light"><GoSearch /></span>
                 <button className="navbar-toggler shadow-none fs-1 text-light" type="button" style={{ zIndex: '200' }} onClick={handleclick}>
                     {display==='none'?<AiOutlineMenuUnfold />:<AiOutlineClose/>}
                 </button>
-                <div className={`collapseNavbar ${window.screen.width<992?`d-${display}`:''}`}>
-                    <ul className="navbar-nav mx-auto mb-2 mb-lg-0 pt-2 text-center">
-                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/" onClick={handleclick}>Home</NavLink></li>
-                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/about" onClick={handleclick}>About</NavLink></li>
-                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/project" onClick={handleclick}>Projects</NavLink></li>
-                        <li className="nav-item mx-2 dropdown">
+                <div className={`collapseNavbar ${window.screen.width<768?`d-${display}`:''}`}>
+                    <ul className="navbar-nav mx-auto mb-2 mb-lg-0 pt-2 ps-2 text-center">
+                        <li className="nav-item"><NavLink className="nav-link" to="/" onClick={handleclick}>Home</NavLink></li>
+                        <li className="nav-item"><NavLink className="nav-link" to="/about" onClick={handleclick}>About</NavLink></li>
+                        <li className="nav-item"><NavLink className="nav-link" to="/project" onClick={handleclick}>Projects</NavLink></li>
+                        <li className="nav-item dropdown">
                             <NavLink className={`nav-link dropdown-toggle`} to="/service" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services <FaAngleDown /></NavLink>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li className="dropdown-item text-center"><Link to="/">Interior</Link></li>
                                 <li className="dropdown-item text-center"><Link to="/">Exterior</Link></li>
                             </ul>
                         </li>
-                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/blog" onClick={handleclick}>Blog</NavLink></li>
-                        <li className="nav-item mx-2"><NavLink className="nav-link" to="/contact" onClick={handleclick}>Contact</NavLink></li>
-                        <li className="nav-item mx-2 navSecondSearch"><button className='border-0 bg-transparent fs-5 text-light'><GoSearch /></button></li>
+                        <li className="nav-item"><NavLink className="nav-link" to="/blog" onClick={handleclick}>Blog</NavLink></li>
+                        <li className="nav-item"><NavLink className="nav-link" to="/contact" onClick={handleclick}>Contact</NavLink></li>
+                        <li className="nav-item navSecondSearch d-flex align-items-center justify-content-center"><button className='border-0 bg-transparent text-light'><GoSearch /></button></li>
                     </ul>
-                    <div className="d-flex mb-2 mb-lg-0 justify-content-center" style={{fontSize:'1rem'}}>
+                    <div className="d-flex mb-2 mb-lg-0 justify-content-center mt-1" style={{fontSize:'1rem'}}>
                         <a className="nav-link" href="/"><FaFacebookF /></a>
                         <a className="nav-link" href="/"><FaTwitter /></a>
                         <a className="nav-link" href="/"><FaLinkedinIn /></a>
